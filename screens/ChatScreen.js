@@ -24,6 +24,17 @@ export default class ChatScreen extends React.Component {
         }
     }
 
+    componentWillMount(){
+        firebase.database().ref('messages').child(User.phone).child(this.state.person.phone)
+            .on('child_added', (value)=>{
+                this.setState((prevState)=>{
+                    return {
+                        messageList: [...prevState.messageList, value.val()]
+                    }
+                })
+            })
+    }
+
     handleChange = key => val => {
         this.setState({ [key]: val })
     }
