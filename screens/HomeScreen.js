@@ -1,8 +1,7 @@
 import React from 'react';
-import { SafeAreaView, Image, Text, TouchableOpacity, FlatList, AsyncStorage } from 'react-native';
+import { SafeAreaView, Image, Text, TouchableOpacity, FlatList} from 'react-native';
 import User from '../User';
 import firebase from 'firebase';
-import styles from '../constants/styles';
 
 //profile image https://www.flaticon.com/authors/smashicons"
 
@@ -37,10 +36,6 @@ export default class HomeScreen extends React.Component {
                 })
             }
         })
-    }
-    _logout = async () => {
-        await AsyncStorage.clear();
-        this.props.navigation.navigate('Auth');
     }
 
     renderRow = ({ item }) => {
