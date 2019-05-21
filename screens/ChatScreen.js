@@ -35,8 +35,8 @@ export default class ChatScreen extends React.Component {
                 time: firebase.database.ServerValue.TIMESTAMP,
                 from: User.phone
             }
-            updates['message/' + User.phone + '/' + this.state.person.phone + '/' + msgId] = message;
-            updates['message/' + this.state.person.phone + User.phone + '/' + '/' + msgId] = message;
+            updates['messages/' + User.phone + '/' + this.state.person.phone + '/' + msgId] = message;
+            updates['messages/' + this.state.person.phone + '/' + User.phone + '/' + msgId] = message;
             firebase.database().ref().update(updates);
             this.setState({ textMessage: '' });
         }
