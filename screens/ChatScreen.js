@@ -94,14 +94,14 @@ export default class ChatScreen extends React.Component {
                     renderItem={this.renderRow}
                     keyExtractor={(item, index)=> index.toString()}
                 />
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', marginHorizontal:5 }}>
                     <TextInput
                         style={styles.input}
                         value={this.state.textMessage}
                         placeholder="Type a message..."
                         onChangeText={this.handleChange('textMessage')}
                     />
-                    <TouchableOpacity onPress={this.sendMessage}>
+                    <TouchableOpacity onPress={this.sendMessage} style={{paddingBottom:10,marginLeft:5}}>
                         <Text style={styles.btnText}>Send</Text>
                     </TouchableOpacity>
                 </View>

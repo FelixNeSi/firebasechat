@@ -1,13 +1,21 @@
 import React from 'react';
-import { SafeAreaView, Text, TouchableOpacity, FlatList, AsyncStorage } from 'react-native';
+import { SafeAreaView, Image, Text, TouchableOpacity, FlatList, AsyncStorage } from 'react-native';
 import User from '../User';
 import firebase from 'firebase';
 import styles from '../constants/styles';
 
+//profile image https://www.flaticon.com/authors/smashicons"
 
 export default class HomeScreen extends React.Component {
-    static navigationOptions = {
-        title: 'Chats'
+    static navigationOptions = ({navigation}) => {
+        return{
+            title: 'Chats',
+            headerRight: (
+                <TouchableOpacity onPress={()=>navigation.navigate('Profile')}>
+                    <Image source={require('../images/user.png')} style={{width:32, height:32, marginRight:7}}/>
+                </TouchableOpacity>
+            )
+        }
     }
 
     state = {
