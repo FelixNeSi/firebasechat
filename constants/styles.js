@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
         padding: 10,
         borderWidth: 1,
         borderColor: '#ccc',
-        width: '90%',
+        width: '80%',
         marginBottom: 10,
         borderRadius: 5
     },
