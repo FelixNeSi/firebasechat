@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, AsyncStorage } from 'react-native';
 import User from '../User';
-import styles from '../constants/styles'
+import styles from '../constants/styles';
 
 export default class HomeScreen extends React.Component {
     static navigationOptions = {

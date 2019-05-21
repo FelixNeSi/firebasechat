@@ -1,7 +1,8 @@
 import React from 'react';
 import { Text, Alert, AsyncStorage, TouchableOpacity, TextInput, View } from 'react-native';
+import firebase from 'firebase';
 import User from '../User';
-import styles from '../constants/styles'
+import styles from '../constants/styles';
 
 export default class LoginScreen extends React.Component {
     static navigationOptions = {
@@ -26,6 +27,7 @@ export default class LoginScreen extends React.Component {
             //save user data
             await AsyncStorage.setItem('userPhone', this.state.phone)
             User.phone = this.state.phone;
+            firebase.database().ref('users/' + User.phone).set({name: this.state.name});
             this.props.navigation.navigate('App');
         }
     }
