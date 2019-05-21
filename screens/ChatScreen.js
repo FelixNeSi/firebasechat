@@ -3,6 +3,7 @@ import { SafeAreaView, Text, View, TextInput, TouchableOpacity } from 'react-nat
 import styles from '../constants/styles';
 import User from '../User';
 import firebase from 'firebase';
+import { FlatList } from 'react-native-gesture-handler';
 
 
 export default class ChatScreen extends React.Component {
@@ -18,7 +19,8 @@ export default class ChatScreen extends React.Component {
                 name: props.navigation.getParam('name'),
                 phone: props.navigation.getParam('phone'),
             },
-            textMessage: ''
+            textMessage: '',
+            messageList: []
         }
     }
 
@@ -42,10 +44,32 @@ export default class ChatScreen extends React.Component {
         }
     }
 
+    renderRow = ({item}) => {
+        return(
+            <View style={{
+                flexDirection:'row',
+                width:'60%',
+                alignSelf:item.from===User.phone ? 'flex-end' : 'flex-start',
+                backgroundColor: item.from===User.phone ? '#00897b' : '#7cb342',
+                borderRadius:5,
+                marginBottom:10
+            }}> 
+                <Text style={{color:'#fff', padding:7, fontSize:16}}>
+                    {item.message}
+                </Text>
+                <Text style={{color:'#eee',padding:3,fontSize:12}}>{item.time}</Text>
+            </View>
+        )
+    }
 
     render() {
         return (
             <SafeAreaView>
+                <FlatList 
+                    data={this.state.messageList}
+                    renderItem={this.renderRow}
+                    keyExtractor={(item, index)=> index.toString()}
+                />
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                     <TextInput
                         style={styles.input}
