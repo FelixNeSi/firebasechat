@@ -2,7 +2,7 @@
 import React from 'react';
 import {StyleSheet, Text, Alert, AsyncStorage, TouchableOpacity, TextInput, View} from 'react-native';
 
-export default class App extends React.Component {
+export default class LoginScreen extends React.Component {
   state = {
     phone: '',
     name: ''
@@ -10,14 +10,6 @@ export default class App extends React.Component {
 
   handleChange = key => val => {
     this.setState({ [key]: val})
-  }
-
-  componentWillMount(){
-    AsyncStorage.getItem('userPhone').then(val=>{
-      if(val){
-        this.setState({phone: val})
-      }
-    })
   }
 
   submitForm = async () => {
