@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { SafeAreaView, Text, View, Dimensions, TextInput, TouchableOpacity } from 'react-native';
 import styles from '../constants/styles';
 import User from '../User';
 import firebase from 'firebase';
@@ -63,9 +63,11 @@ export default class ChatScreen extends React.Component {
     }
 
     render() {
+        let {height, width} = Dimensions.get('window');
         return (
             <SafeAreaView>
-                <FlatList 
+                <FlatList
+                    style={{padding:10, height: height * 0.8}} 
                     data={this.state.messageList}
                     renderItem={this.renderRow}
                     keyExtractor={(item, index)=> index.toString()}
